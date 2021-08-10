@@ -1,0 +1,213 @@
+***NOT IMPORTANT***
+- These are just some notes I was taking while creating this project.
+2020:
+
+7/20:
+- Create main frame.
+- Create ChessBoard.java to create board.
+- Set chess board.
+
+7/21:
+- Set pieces position/images/color.
+- Create Piece.java, parent class for all piece classes.
+- Create Pawn.java
+
+7/22: 
+- get basic movement for pieces.
+- fixed problem with board creation.
+
+  
+7/24:
+- fixed pawn movement
+- fixed layout of JFrame (added borderlayout, so
+  we can add header buttons and textPanes)
+- added labels for each row and column (1-8 & a-h)
+
+7/26:
+- Create Header.java, to take care of info in
+  top JPanel.
+- set up a selected piece text pane for header
+  (will help with finding errors also).
+- Error: when creating a Header class object
+    in ChessBoard... It's making all the JPanels show
+    up blank. 
+- Fixed: instead of creating an object, just set
+  all the values as globals so I can access them anywhere.
+  (probably not the best solution) 
+  
+
+8/1:
+- fix the number images for gridlayout, maybe
+  use gridbaglayout instead? more variety, gridlayout
+  isn't letting me set the size of the buttons.
+- Making it so that Pieces can take other pieces.
+
+8/5 to 8/15:
+- Finish Pawn.java, need to set its rules for moving
+  and taking.
+- Finish Queen.java
+- Finish some of King.java (only movement no rules like checks)
+
+- Black taking pieces works fine, but with white
+   there are errors. (fixed)
+
+----------------------------------------------------------------
+Coming back to finish this for Network Programming Project:
+2021:
+
+2/28:
+- Fixed some bad/lazy coding.
+- Rook.java. (not castling).
+
+2/31:
+- Knight.java.
+- Bishop.java.
+
+3/1:
+- fix Queen.java. 
+- King.java (need to implement check/checkmate). 
+- check system.
+**Something to figure out checkmate.
+**Maybe check all the squares that the king can go 
+to and simulate if the king can go there or not. But then
+idk how to figure out moving other pieces to block the check.
+Fix:
+1) When the king puts itself in check.
+2) Moving another piece in front of king to block the check.
+
+
+3/3:
+- fixed the check system.
+*Cant put your own piece in check now.
+*Can block a check with your own pieces now.
+*Check errors are fixed.
+*Code looks alot better and simpler.
+
+
+3/4:
+- castling.
+*After I castle there are alot of errors.
+*something with turn counter is messed up.
+Fixed^^, castling is done.
+
+Fixing Problems:
+- if taking a piece that puts you in check. We already
+have that implemented for an empty cell, but now
+we need to implement it so that if we take a piece
+that puts us in check it resets the move.
+fixed^^
+- if in check and you try to castle, it deletes the rook.
+Need to make it so that it doesnt let you.
+fixed^^
+- if in check and trying to do a VALID castle, 
+it messes up.
+fixed^^
+
+
+3/4 to 3/20:
+- Add some more info to header:
+	- Resign Button (done)
+	- Move Counter (done)
+	- Color to move (done)
+	- Show taken pieces (done)
+	- Timers 10 min. (done)
+	- Turn Counter. (done)
+	- Piece Value (done)
+	- draw button (done)
+	- Move list (done)
+	- Sorting taken pieces (done).
+	- flip board. (not yet)
+	- fix taken piece array images. (not yet, cant really fix)
+	- Highlights for potential piece moves (done).
+	
+To-do List (need to fix):
+	- checkmate system. (done)
+	- En Passant. (done)
+	- castle (missing 2 rules). (done)
+	- Ask user for which color they want (done).
+	- Flip Board (can't do).
+	- fix the kings cant go next to eachother. (done).
+	- en-passant rule. (done)
+	- Simple stalemate system. (done)
+	- highlight borders fixed. (done)
+	- Change frames background. (done)
+	- Home Page (done)
+	- game ends, stop the play, let them see the board. (done)
+	- fix castle highlights. (done)
+	
+	
+	
+3/22:
+Custom game capability is fully done (where you play against yourself)
+  
+  
+--------------------------------------------------------
+Starting Online capability:
+initial idea, user clicks button online --> creates server, waits for client to connect (if not brings it back to home screen --> 
+both GUI's pop up for each side when connection is established --> sends the move data to eachother --> makes moves on each screen depending on that data.
+
+3/23:
+Finally starting to code socket server (MainPlayer.java) and client (GuestPlayer.java) using TCP
+Changing MainPlayer.java to the main class to be ran instead of HomePage.java
+*Problem with running HomePage inside of MainPlayer, EventQueues are null? (fixed)
+
+3/25:
+MainPlayer not setting onlinegame to online? (fixed)
+Something is wrong with the server/client, should be simple but both sides are not recieving data, could be an instance 
+issue because were calling a function to create a server from a different class. (fixed)
+
+3/26:
+Try to get Guestplayer to read one move from the Mainplayer as a start (say MainPlayer will always be white)
+
+3/28:
+setting/fixing code inside of chessboard.java so that it sends the move data between main and guest. 
+Was able to send data to client through a function, but when trying to read data through a function I'm getting errors (i think it's due to the 2 different ChessBoard Objects being created)
+
+*Can't just use globals to send data cause then it wouldnt be socket programming and wouldnt work for different IPs (fixed)
+
+3/29 to 3/31:
+setting the right code for the opponent to copy the move from main on the board.
+*Why doesnt the valid function work? it should work.. (fixed) 
+*Works perfectly for 1 turn.
+
+4/1 to 4/5:
+Updating it to work for the entire game. (done) 
+*Alot of code is messed up because of this addition.
+*Was having a listener issue for the action performed function when the buttons are clicked, due to bad coding. Fixed my code
+to use SwingUtilities invokeLater for the gui so that the server/client can run in the background on a different thread than the GUI. (fixed)
+
+4/5 to 4/10:
+additions: cleaning up code, modifying the socket, logger filer, etc.
+
+4/12 to 4/15 before submission:
+- creating project report
+- bug testing
+
+Additions:
+- Added a logger file that records the server and client information as well as the moves in the game. (done)
+- Added something so that the client can run its program before the server but sits in a while loop testing the socket to
+see if its open (done)
+
+Known Issues:
+- Fixed turn counter for guest. (fixed)
+- Fixing timers for online game (fixed)
+- buttons are not visible when starting frame, have to hover over them for them to show. (fixed)
+- When switching to blackside, same problem as the one above, it doesnt switch until I click something on screen. (fixed)
+- Bot game doesnt work if I pick blackside.
+- bot game castling is broken, same as online game (only sometimes)
+- bot and online game draw and resign is weird.
+
+
+future:
+- bot capability: hard mode (full on ai)
+- https://www.freecodecamp.org/news/simple-chess-ai-step-by-step-1d55a9266977/ - helpful read if wanting to incorporate an AI
+- fix bad coding
+
+
+
+
+
+
+
+
+  
