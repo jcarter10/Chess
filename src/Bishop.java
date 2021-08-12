@@ -35,7 +35,7 @@ public class Bishop extends ChessPiece {
 		//invalid move.
 		else {
 			validMove = false;
-			System.out.println("Invalid Move!!! Play another...");
+			System.out.println("ERROR, Invalid Bishope Move.");
 		}
 
 		//Returning boolean based on multiple conditions that were set.
@@ -47,7 +47,6 @@ public class Bishop extends ChessPiece {
 			cp1.incrementMoveCount();
 		}
 
-		System.out.println("Move count = " + cp1.getMoveCount());
 		return validMove;
 	}
 
@@ -61,7 +60,7 @@ public class Bishop extends ChessPiece {
 		foundPiece = ChessBoard.getChessPiece(goRow, goCol);
 		if (foundPiece != -1) {
 			if (cp1.getColor() == ChessBoard.pieces.get(foundPiece).getColor()) {
-				System.out.println("You're trying to take your own piece.");
+				System.out.println("ERROR, You're trying to take your own piece.");
 				return true;
 			}
 		}
@@ -76,7 +75,7 @@ public class Bishop extends ChessPiece {
 				}
 				else if (foundPiece != -1) {
 					//piece was found in path to location.
-					System.out.println("Piece in the way");
+					System.out.println("ERROR, Piece in the way");
 					return true;
 				}
 				i++;
@@ -92,7 +91,7 @@ public class Bishop extends ChessPiece {
 				}
 				else if (foundPiece != -1) {
 					//piece was found in path to location.
-					System.out.println("Piece in the way");
+					System.out.println("ERROR, Piece in the way");
 					return true;
 				}
 				i++;
@@ -108,7 +107,7 @@ public class Bishop extends ChessPiece {
 				}
 				else if (foundPiece != -1) {
 					//piece was found in path to location.
-					System.out.println("Piece in the way");
+					System.out.println("ERROR, Piece in the way");
 					return true;
 				}
 				i++;
@@ -124,7 +123,7 @@ public class Bishop extends ChessPiece {
 				}
 				else if (foundPiece != -1) {
 					//piece was found in path to location.
-					System.out.println("Piece in the way");
+					System.out.println("ERROR, Piece in the way");
 					return true;
 				}
 				i++;

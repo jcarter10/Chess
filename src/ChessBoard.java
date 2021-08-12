@@ -376,7 +376,8 @@ public class ChessBoard implements ActionListener{
 	//Action performed for any button on the chessboard being pressed.
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("\nMove Counter: " + currentTurn);
+		String turnColor = (currentTurn % 2 == 0) ? "Black" : "White";
+		System.out.println("\n--------- Current Turn: "+ turnColor + " ---------- ");
 
 		//showing user which colors turn it is.
 		Header.setCurrentTurnText(currentTurn);
@@ -523,11 +524,10 @@ public class ChessBoard implements ActionListener{
 
 			//getting who's current turn it is for bot game.
 			cur = (currentTurn % 2 == 0) ? true : false;
-			System.out.println("Current Turn Color: " + cur);
 
 			//if its a bot game, and when its the bots turn it calculates all it's potential moves and makes a move.
 			if (botColor == cur && HomePage.botGame == true && jb_goto != null && jb_current != null) {
-				System.out.println("\nEntering AI part.");
+				System.out.println("\nEntering AI Script.");
 
 				//clears other colors move before it makes its own.
 				grid[jb_currentRow][jb_currentCol].setBorder(null); 
@@ -535,7 +535,7 @@ public class ChessBoard implements ActionListener{
 
 				calculateAllPossibleMoves();
 
-				System.out.println("\nEnding AI part.");
+				System.out.println("\nEnding AI Script.");
 
 				//showing user which colors turn it is.
 				Header.setCurrentTurnText(currentTurn);
@@ -743,7 +743,7 @@ public class ChessBoard implements ActionListener{
 					}
 					//user tried to castle but is in check so cannot.
 					else if (valid == true && inCheck == true) {
-						System.out.println("You can't castle when in check!");
+						System.out.println("Can't castle when in check...");
 						//resetting move counters, for next attempt of castling.
 						pieces.get(curPos).decrementMoveCount();
 						pieces.get(gotoPos).decrementMoveCount();
@@ -825,7 +825,7 @@ public class ChessBoard implements ActionListener{
 				pieces.get(tempCurPos).decrementMoveCount();
 				valid = false;
 			}
-			System.out.println("\nYou can't move there, you are putting yourself in check!");
+			System.out.println("\nCan't move there, putting yourself in check!");
 		}
 		//no checks on itself after move, so checking other king for checks.
 		else {
@@ -938,8 +938,8 @@ public class ChessBoard implements ActionListener{
 		cur.setCol(newCol);
 
 		//setting current piece to new cell for next update.
-		System.out.println("old: " + oldRow + "   " + oldCol);
-		System.out.println("new: " + newRow + "   " + newCol);
+//		System.out.println("old: " + oldRow + "   " + oldCol);
+//		System.out.println("new: " + newRow + "   " + newCol);
 		grid[newRow][newCol].setIcon(grid[oldRow][oldCol].getIcon());
 
 		//clear icon of old cell.
@@ -968,7 +968,7 @@ public class ChessBoard implements ActionListener{
 
 		//castling black side.
 		if (King.castlingBlack == true) {
-			System.out.println("Trying to castle black side!");
+
 			//long castle
 			if (pieces.get(gotoPos).getRow() == 0 && pieces.get(gotoPos).getCol() == 0) {
 				//moves the king 2 cells to the left and moves the rook 3 to the right.
@@ -990,7 +990,7 @@ public class ChessBoard implements ActionListener{
 		}
 		//castling white side.
 		else if (King.castlingWhite == true) {
-			System.out.println("Trying to castle white side!");
+
 			//long castle
 			if (pieces.get(gotoPos).getRow() == 7 && pieces.get(gotoPos).getCol() == 0) {
 				//moves the king 2 cells to the left and moves the rook 3 to the right.
@@ -1352,7 +1352,6 @@ public class ChessBoard implements ActionListener{
 			}
 		}
 
-
 //		//printing potential moves.
 //		i = 0;
 //		while (i < possibleAIMovementsX.size()) {
@@ -1379,7 +1378,6 @@ public class ChessBoard implements ActionListener{
 			max = possibleAIMovementsX.size() - 1;
 		}
 		int selectedMovePos = (int)(Math.random() * (max - min + 1) + min);
-		System.out.println("selected move: " + selectedMovePos);
 
 		//when its a medium level bot, it must check the best move possible in its position.
 		//checks to see if all the moves have the same point value, if so it makes a random move.
@@ -1477,7 +1475,7 @@ public class ChessBoard implements ActionListener{
 			}
 		}
 
-		System.out.println("best move possible loc: " + selectedMovePos);
+		System.out.println("AI selected move: " + selectedMovePos);
 
 		//king has no moves and is not in check so stalemate
 		if (possibleAIChessPiece.isEmpty() == true) {
@@ -1487,7 +1485,6 @@ public class ChessBoard implements ActionListener{
 		//processing the random move.
 		int piecePos = getChessPiece(possibleAIChessPiece.get(selectedMovePos).getRow(), possibleAIChessPiece.get(selectedMovePos).getCol());
 		int movePos = getChessPiece(possibleAIMovementsX.get(selectedMovePos), possibleAIMovementsY.get(selectedMovePos));
-		System.out.println("Piece Pos: " + piecePos + "and move Pos: " + movePos);
 
 		//setting some important variables
 		jb_currentRow = possibleAIChessPiece.get(selectedMovePos).getRow();
@@ -1512,7 +1509,7 @@ public class ChessBoard implements ActionListener{
 		//move was invalid, resetting clicked button.
 		else {
 			grid[jb_currentRow][jb_currentCol].setBorder(null);
-			System.out.println("\nBAD MOVE TRY AGAIN");
+			System.out.println("AI selected a bad move, TRYING AGAIN.");
 			calculateAllPossibleMoves();
 		}
 	}
