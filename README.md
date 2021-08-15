@@ -12,20 +12,20 @@ frames, and the last 7 are for chess piece data where their is a parent class al
 children classes. This is shown as a flowchart in the following figure:
 
 <p align="center">
-  <img src="screenshots/flowChart.png" width=250>
+  <img src="screenshots/flowChart.png">
 </p>
 
 The pipeline starts with the MainPlayer class which also acts as the main class for the entire project. The User will run this class and then the HomePage will pop up to prompt the user a decision between 3 options for the game which are custom, bot, or online. For the GuestPlayer to run, it is dependent on the answer from the HomePage created by the MainPlayer, if that decision is an online game then that is the only time where the GuestPlayer is able to connect (because the server socket from the MainPlayer will be open for connection). Essentially the GuestPlayer is the client from a different location who will connect to the server (aka the MainPlayer) to play a game.
 
 <p align="center">
-  <img src="screenshots/homePage.png" width=250>
+  <img src="screenshots/homePage.png">
 </p>
 
 Irrespective of the decision in the HomePage, it will create the MainFrame which is another JFrame that will hold the gridlayout used for the chessboard as well as other swing components to hold important information about the game. Then the chessboard will be created which creates an 8x8 gridlayout where each cell in the grid acts as a JButton, then a function will be called to create the chess pieces on the board. I did it this way so that each button will be empty or contain a chess piece, so when we want to make a move we simply press the button of the chess piece and then press the button we want the chess piece to move too. Of course it’s not that simple, but the functions I’ve created in the class will take care of that process and check if it’s a valid move before processing it (if interested check out the action performed function in ChessBoard.java, it is the main function for processing/validating moves on the board).
 
 <p align="center">
-  <img src="screenshots/serverSide.PNG" width=250>
-  <img src="screenshots/clientSide.PNG" width=250>
+  <img src="screenshots/serverSide.PNG">
+  <img src="screenshots/clientSide.PNG">
 </p>
 
 Each type of piece on the chessboard have their own respectful class where each of those classes 
