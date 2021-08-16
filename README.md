@@ -2,8 +2,7 @@
 Initially the project was built as a side project over the summer, where the only plans was to build a chess game using JAVA. The initial functionality wanted was that the user can play a custom game by themselves to practice theory or a game against a simple bot to simulate playing another person. Once those modes were developed I took a network programming course where I was able to add online capability to it so a guest can join and connect to the main player to play a match online.
 
 # Specifications
-
-Project was built using JAVA only, and it was developed using the Eclipse IDE. More specifically, the GUIs were built using APIs such as JAVA Swing and JAVA AWT. The IDEs built in design tool for user interfaces handled all of the redundant coding automatically, which creates a basic template that allows us to make modifications alot easier. 
+Project was built using JAVA only, and it was developed using the Eclipse IDE. More specifically, the GUIs were built using APIs such as JAVA Swing and JAVA AWT. The IDEs built in design tool for user interfaces handled all of the redundant coding automatically, which creates a basic template that allows us to make modifications alot easier. For all of the chess piece movement, collision-testing, rules, and etc it was all vanilla JAVA. The networking portion involved creating a TCP socket connection between the main player (server) and the guest player (client), so multithreading was needed to handle all of the client and server I/O data in the background of the GUIs.
 
 # Project Pipeline
 Consists of 13 classes in total, where 2 of them belong to the server/client, 3 are 
@@ -34,6 +33,3 @@ properties and setting the pieces position. With that information the class for 
 provide all of the functions for moving the pieces or taking another piece (collision-testing). A
 lot of the code in these classes are re-used in other classes (example: the queen class shares 
 movement with almost every other class). Along with ChessBoard, the King class is one of the most important classes because it contains the functions to check for checks and checkmates. 
-
-# Summary: Core Features
-Since this is a pretty in depth project (~8000 lines of actual code) I will only list 
