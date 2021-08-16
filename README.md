@@ -23,8 +23,8 @@ The pipeline starts with the MainPlayer class which also acts as the main class 
 Irrespective of the decision in the HomePage, it will create the MainFrame which is another JFrame that will hold the gridlayout used for the chessboard as well as other swing components to hold important information about the game. Then the chessboard will be created which creates an 8x8 gridlayout where each cell in the grid acts as a JButton, then a function will be called to create the chess pieces on the board. I did it this way so that each button will be empty or contain a chess piece, so when we want to make a move we simply press the button of the chess piece and then press the button we want the chess piece to move too. Of course it’s not that simple, but the functions I’ve created in the class will take care of that process and check if it’s a valid move before processing it (if interested check out the action performed function in ChessBoard.java, it is the main function for processing/validating moves on the board).
 
 <p align="center">
-  <img src="screenshots/serverSide.PNG" width=450>
-  <img src="screenshots/clientSide.PNG" width=450>
+  <img src="screenshots/serverSide.PNG" width=500>
+  <img src="screenshots/clientSide.PNG" width=500>
 </p>
 
 Each type of piece on the chessboard have their own respectful class where each of those classes 
